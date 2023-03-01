@@ -1,5 +1,9 @@
 import javascript
 import DataFlow::PathGraph
+// for InsufficientPasswordHashAlgorithm
+import semmle.javascript.security.dataflow.InsufficientPasswordHashCustomizations::InsufficientPasswordHash
+import semmle.javascript.security.CryptoAlgorithms
+
 
 /* 
 from DataFlow::Node dollarArg
@@ -29,5 +33,5 @@ class User extends ObjectExpr{
 
 
 
-from User u
+from InsufficientPasswordHashAlgorithm u
 select u
