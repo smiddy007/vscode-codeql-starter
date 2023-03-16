@@ -34,7 +34,5 @@ class User extends ObjectExpr{
 
 
 // want to get LHS of algo assignment
-from CreateKey k
-select 
-  k.getAstNode(),
-  k.getASuccessor()
+from CryptoJS_IPHA app
+select app

@@ -62,6 +62,15 @@ let utils = {
     return hash.toString(crypto.enc.Base64)
   },
 
+  hashPassword_11: (email, password) => {
+    var algo = crypto.algo.MD5.create()
+    algo.update(password, 'utf-8')
+    algo.update(crypto.MD5(email.toLowerCase()), 'utf-8')
+    var hash = algo.finalize()
+
+    return hash.toString(crypto.enc.Base64)
+  },
+
   hashPassword_21: (email, password) => {
     var algo = crypto.algo.PBKDF2.create()
     algo.update(password, 'utf-8')
@@ -70,6 +79,34 @@ let utils = {
 
     return hash.toString(crypto.enc.Base64)
   },
+
+  hashPassword_31: (email, password) => {
+    var algo = crypto.algo.SHA256.create()
+    algo.update(password, 'utf-8')
+    algo.update(crypto.SHA256(password), 'utf-8')
+    var hash = algo.finalize()
+
+    return hash.toString(crypto.enc.Base64)
+  },
+
+  hashPassword_41: (email, password) => {
+    var algo = crypto.algo.PBKDF2.create()
+    algo.update(password, 'utf-8')
+    algo.update(crypto.PBKDF2(password), 'utf-8')
+    var hash = algo.finalize()
+
+    return hash.toString(crypto.enc.Base64)
+  },
+
+  hashPassword_51: (email, password) => {
+    var algo = crypto.algo.PBKDF2.create()
+    algo.update(password, 'utf-8')
+    algo.update(PBKDF2(email.toLowerCase()), 'utf-8')
+    var hash = algo.finalize()
+
+    return hash.toString(crypto.enc.Base64)
+  },
+
 
   exec: (cmd, args, callback) => {
   	var spawn = require('child_process').spawn
