@@ -62,6 +62,15 @@ let utils = {
     return hash.toString(crypto.enc.Base64)
   },
 
+  hashPassword_21: (email, password) => {
+    var algo = crypto.algo.PBKDF2.create()
+    algo.update(password, 'utf-8')
+    algo.update(crypto.PBKDF2(email.toLowerCase()), 'utf-8')
+    var hash = algo.finalize()
+
+    return hash.toString(crypto.enc.Base64)
+  },
+
   exec: (cmd, args, callback) => {
   	var spawn = require('child_process').spawn
   	var child = spawn(cmd, args)

@@ -3,6 +3,7 @@ import DataFlow::PathGraph
 // for InsufficientPasswordHashAlgorithm
 import semmle.javascript.security.dataflow.InsufficientPasswordHashCustomizations::InsufficientPasswordHash
 import semmle.javascript.security.CryptoAlgorithms
+import semmle.javascript.frameworks.CryptoLibraries::CryptoJS
 
 
 /* 
@@ -32,6 +33,8 @@ class User extends ObjectExpr{
   }
 
 
-
-from InsufficientPasswordHashAlgorithm u
-select u
+// want to get LHS of algo assignment
+from CreateKey k
+select 
+  k.getAstNode(),
+  k.getASuccessor()
