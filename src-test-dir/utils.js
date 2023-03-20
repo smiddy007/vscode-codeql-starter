@@ -53,6 +53,7 @@ let utils = {
     }
   },
 
+  // Needs to catch first algo.update(password
   hashPassword: (email, password) => {
     var algo = crypto.algo.SHA256.create()
     algo.update(password, 'utf-8')
